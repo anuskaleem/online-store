@@ -1,6 +1,12 @@
 # OnlineStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.7. 
+
+There are two users to login with:
+1. admin (password 'admin') with admin view / roles
+2. user1 (password '1234') with user view / roles
+
+We can add more users in json file if we want.
 
 ## Development server
 
