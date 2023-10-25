@@ -1,0 +1,6 @@
+<div style="display: flex; justify-content: space-between;">
+    <button (click)="addNewProduct()" type="button" class="btn btn-primary">Add New</button>
+    <button (click)="logoutUser()" type="button" class="btn btn-primary">Log Out</button>
+</div>
+<app-products-list *ngIf="!productId && !addNew" (fetchProductDetails)="fetchProductDetails($event)" [isAdmin]="true" [updatedProduct]="product" [addedProduct]="newProduct"></app-products-list>
+<app-product-details *ngIf="productId || addNew" [productId]="productId" (updatedProduct)="updatedProduct($event)" (addedProduct)="addedProduct($event)"></app-product-details>

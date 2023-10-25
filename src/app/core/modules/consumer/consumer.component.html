@@ -1,0 +1,14 @@
+<div style="display: flex; justify-content: space-between;">
+    <button (click)="logoutUser()" type="button" class="btn btn-primary">Log Out</button>
+</div>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Filter By Categories
+    </button>
+    <div class="" aria-labelledby="dropdownMenuButton">
+        <ng-container *ngFor="let category of categories; let categoryId = index">
+            <button type="button" class="dropdown-item" (click)="filterItems(category)">{{category}}</button>
+        </ng-container>
+    </div>
+  </div>
+<app-products-list [isAdmin]="false" [productsList] = "productsList"></app-products-list>

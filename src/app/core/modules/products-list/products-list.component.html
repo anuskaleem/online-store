@@ -1,0 +1,45 @@
+<div class="mt-4">
+
+  <div *ngIf="!isAdmin" class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Sort By
+    </button>
+    <div class="" aria-labelledby="dropdownMenuButton">
+        <button type="button" class="dropdown-item" (click)="sortItems(0)">Title</button>
+        <button type="button" class="dropdown-item" (click)="sortItems(1)">Price (Lowest To Highest)</button>
+        <button type="button" class="dropdown-item" (click)="sortItems(2)">Price (Highest To Lowest)</button>
+        <button type="button" class="dropdown-item" (click)="sortItems(3)">Average Rating</button>
+    </div>
+  </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Price</th>
+            <th scope="col">Category</th>
+            <th scope="col">Description</th>
+            <th *ngIf="!isAdmin "scope="col">Rating</th>
+            <th *ngIf="isAdmin "scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let product of products; let productId = index">
+            <tr>
+              <th scope="row">{{product.id}}</th>
+              <td>{{product.title}}</td>
+              <td>{{product.price}}</td>
+              <td>{{product.category}}</td>
+              <td>{{product.description}}</td>
+              <td *ngIf="isAdmin">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                  <button (click)="fetchAndEditProduct(productId)" type="button" class="btn btn-primary">Edit</button>
+                  <button (click)="deleteProduct(productId)" type="button" class="btn btn-secondary">Delete</button>
+                </div>
+              </td>
+              <td *ngIf="!isAdmin">{{product.rating.rate}}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
